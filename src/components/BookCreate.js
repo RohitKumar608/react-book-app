@@ -1,28 +1,30 @@
-import { useState } from 'react';
+import { useState } from 'react'
+import { useBook } from '../context/book'
 
-function BookCreate({ onCreate }) {
-  const [title, setTitle] = useState('');
+function BookCreate() {
+  const { createBook } = useBook()
+  const [title, setTitle] = useState('')
 
   const handleChange = (event) => {
-    setTitle(event.target.value);
-  };
+    setTitle(event.target.value)
+  }
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    onCreate(title);
-    setTitle('');
-  };
+    event.preventDefault()
+    createBook(title)
+    setTitle('')
+  }
 
   return (
-    <div className="book-create">
+    <div className='book-create'>
       <h3>Add a Book</h3>
       <form onSubmit={handleSubmit}>
         <label>Title</label>
-        <input className="input" value={title} onChange={handleChange} />
-        <button className="button">Create!</button>
+        <input className='input' value={title} onChange={handleChange} />
+        <button className='button'>Create!</button>
       </form>
     </div>
-  );
+  )
 }
 
-export default BookCreate;
+export default BookCreate
