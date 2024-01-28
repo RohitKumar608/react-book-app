@@ -3,7 +3,7 @@ import BookEdit from './BookEdit'
 import { useBook } from '../context/book'
 
 function BookShow({ book }) {
-  const { deleteBookById, editBookById } = useBook()
+  const { deleteBookById } = useBook()
   const [showEdit, setShowEdit] = useState(false)
 
   const handleDeleteClick = () => {
@@ -14,9 +14,8 @@ function BookShow({ book }) {
     setShowEdit(!showEdit)
   }
 
-  const handleSubmit = (id, newTitle) => {
+  const handleSubmit = () => {
     setShowEdit(false)
-    editBookById(id, newTitle)
   }
 
   let content = <h3>{book.title}</h3>
